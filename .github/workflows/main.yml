@@ -35,7 +35,7 @@ jobs:
               owner: 'iam-py-test',
               repo: 'test-test-test',
               head: 'test',
-              base: 'test'
+              base: 'main'
             })
   
             
