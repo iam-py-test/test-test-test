@@ -4,6 +4,20 @@ on:
     types: [opened,edited]
 
 jobs:
+  mkchanges:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Do something
+      run: echo 1 >> "test.txt"
+    - name: Commit & Push
+      uses: actions-x/commit@v2
+      with:
+          email: noreply@example.com
+          name: Update bot
+          branch: test
+          message: Update alt lists
   comment:
     runs-on: ubuntu-latest
     steps:
@@ -17,5 +31,11 @@ jobs:
               repo: context.repo.repo,
               body: 'Opening a PR for this...'
             })
-            const script = require('something.js')
-            await script({github, context, core})
+            await github.request('POST /repos/iam-py-test/test-test-test/pulls', {
+              owner: 'iam-py-test',
+              repo: 'test-test-test',
+              head: 'test',
+              base: 'test'
+            })
+  
+            
