@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v4
+      - uses: actions/checkout@v2
+        env:
+          SHA: '${{env.parentSHA}}'
         with:
           script: |
             github.issues.createComment({
